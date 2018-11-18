@@ -1,7 +1,34 @@
+const operationButtons = document.querySelectorAll('.operation-button');
+const clearButton = document.querySelector('#clear-screen');
+const calculateButton = document.querySelector('#calculate');
+const inputField = document.querySelector('#calc-string');
+
+
+operationButtons.forEach(button => button.addEventListener('click', (e) => {
+  inputField.value += e.target.innerHTML;
+}));
+
+clearButton.addEventListener('click', () => {
+  inputField.value = '';
+});
+
+calculateButton.addEventListener('click', () => {
+  let string = calculator(inputField.value);
+  if(string.search(/[()]+/) > -1) {
+    alert('Please use proper formatting.');
+  } else if(string.search(/[^-\d+.]+/) > -1) {
+    alert('You fool, I cannot calculate something like that!');
+  } else {
+    inputField.value = string;
+  }
+});
+
 function calculator(string) {
   let tempCalc;
   while(string.search(/[-+*/!()]/) > -1) {
-    if(string.search(/\(.*\)/) > -1) {
+    if(string.search(/\d+\(/) > -1) {
+      string = string.replace(/(\d+)(\()/, '$1 * $2');
+    } else if(string.search(/\(.*\)/) > -1) {
       tempCalc = (string.match(/\(([^()]*)\)/))[1];
       tempCalc = calculator(tempCalc);
       string = string.replace(/\(([^()]*)\)/, tempCalc);
@@ -21,7 +48,10 @@ function calculator(string) {
       break;
     }
   }
+  if(parseFloat(string) % 1 === 0) {
     return string;
+  } else {
+    return string = (parseFloat(string)).toFixed(4);
 }
 
 function add(a,b) {
@@ -77,6 +107,7 @@ function operate(string) {
       return multiply(num[0], num[1]);
       case '/':
       return divide(num[0], num[1]);
+      }
     }
   }
 }
