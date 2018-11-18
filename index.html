@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="images/icon.png" rel="icon">
+  </head>
+  <body>
+    <header>
+      <h1 class="center margin-top">The Calculator App, the one and only place to calculate!</h1>
+    </header>
+    <div class="center margin-top-large" id="calculator">
+      <form>
+        <input type="text" id="calc-string">
+        <button type="button" class="button" id="clear-screen">cls</button>
+        <button type="button" class="button" id="back-space">back</button>
+        <button type="button" class="button" id="calculate">=</button>
+      </form>
+      <div class="flex" id="button-container">
+        <div id="numbers">
+          <button class="operation-button" id="one">1</button>
+          <button class="operation-button" id="two">2</button>
+          <button class="operation-button" id="three">3</button>
+          <button class="operation-button" id="four">4</button>
+          <button class="operation-button" id="five">5</button>
+          <button class="operation-button" id="six">6</button>
+          <button class="operation-button" id="seven">7</button>
+          <button class="operation-button" id="eight">8</button>
+          <button class="operation-button" id="factorial">!</button>
+          <button class="operation-button" id="nine">9</button>
+          <button class="operation-button" id="zero">0</button>
+          <button class="operation-button" id="decimal">.</button>
+        </div>
+        <div id="operators">
+          <button class="operation-button" id="addition">+</button>
+          <button class="operation-button" id="subtraction">-</button>
+          <button class="operation-button" id="division">/</button>
+          <button class="operation-button" id="multiplication">*</button>
+          <button class="operation-button" id="open-paraentheses">(</button>
+          <button class="operation-button" id="close-paraentheses">)</button>
+        </div>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
